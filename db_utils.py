@@ -12,9 +12,9 @@ def import_yaml_credentials(yaml_filename):
 # Create a class which will contain the methods we will use to 
 # extract data from the RDS database
 class RDSDatabaseConnector:
-    def __init__(self, yaml_filename, yaml_dictionary):
+    def __init__(self, yaml_filename):
         self.yaml_filename = yaml_filename
-        self.yaml_dictionary = import_yaml(file_name)
+        self.yaml_dictionary = import_yaml_credentials(self.yaml_dictionary)
         
         # Define a method which initialises a SQLAlchemy engine 
         # from the credentials provided to the class
@@ -36,10 +36,10 @@ class RDSDatabaseConnector:
             
         
 # Create a function which saves the data in .csv format to local machine
-def save_data(df):
-    df.to_csv('customer_activity.csv')
+def save_data():
+    customer_activity.to_csv('customer_activity.csv')
     
 # Create a function which will load the data from your local machine
 # into a pandas DataFrame
-def load_data(df):
-    df_csv = pd.read_csv('df')
+def load_data():
+    customer_activity = pd.read_csv('customer_activity.csv')
