@@ -5,7 +5,7 @@ import pandas as pd
 
 # Create a function which loads the yaml credentials file and return 
 # the data dictionary contained within
-def import_yaml_credentials(yaml_filename):
+def import_yaml(yaml_filename):
     with open('yaml_filename', 'r') as file:
         return yaml.safe_load(file)
 
@@ -14,11 +14,11 @@ def import_yaml_credentials(yaml_filename):
 class RDSDatabaseConnector:
     def __init__(self, yaml_filename):
         self.yaml_filename = yaml_filename
-        self.yaml_dictionary = import_yaml_credentials(self.yaml_filename)
+        self.yaml_dictionary = import_yaml(self.yaml_filename)
         
         # Define a method which initialises a SQLAlchemy engine 
         # from the credentials provided to the class
-        def create_engine_sqlalchemy(self):
+        def create_engine(self):
             DATABASE_TYPE = 'postgresql'
             DBAPI = 'psycopg2'
             ENDPOINT = self.yaml_dictionary['RDS_HOST']
