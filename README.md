@@ -3,6 +3,10 @@
 ## 1. Description
 
 ## 2. Installation
+Following libraries to be installed:
+- pandas
+- SQLAlchemy
+- PyYAML
 
 ## 3. Usage
 
