@@ -14,7 +14,7 @@ def import_yaml_credentials(yaml_filename):
 class RDSDatabaseConnector:
     def __init__(self, yaml_filename):
         self.yaml_filename = yaml_filename
-        self.yaml_dictionary = import_yaml_credentials(self.yaml_dictionary)
+        self.yaml_dictionary = import_yaml_credentials(self.yaml_filename)
         
         # Define a method which initialises a SQLAlchemy engine 
         # from the credentials provided to the class
