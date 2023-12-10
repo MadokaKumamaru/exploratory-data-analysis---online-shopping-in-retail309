@@ -1,4 +1,6 @@
 # This file will contain code to extract data from the database
+
+# Import required packages
 from sqlalchemy import create_engine
 import pandas as pd
 import yaml
@@ -43,7 +45,3 @@ def save_data():
 def load_data():
     return pd.read_csv('customer_activity.csv')
     
-test = RDSDatabaseConnector(yaml_dictionary)
-engine = test.connect_database()
-df = test.extract_data(engine)
-print(df.head())
