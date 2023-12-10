@@ -22,7 +22,7 @@ class DataTransform:
         self.dataframe[column_name] = self.dataframe[column_name].astype('category')
          
 
-# Covert data types for columns
+# Covert data types for some columns to category 
 customer_activity_DataTransform = DataTransform(customer_activity)
 columns_to_transform = ['administrative', 'product_related', 'informational', 
                         'month', 'operating_systems', 'browser', 'region', 
