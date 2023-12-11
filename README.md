@@ -11,6 +11,7 @@ Following libraries to be installed:
 - statsmodels
 - Numpy
 - seaborn
+- scipy
 
 ## 3. Usage
 Data dictionary for online customer activity:
