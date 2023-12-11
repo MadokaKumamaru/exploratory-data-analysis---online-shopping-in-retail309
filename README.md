@@ -8,6 +8,7 @@ Following libraries to be installed:
 - SQLAlchemy
 - PyYAML
 - Matplotlib
+- statsmodels
 
 ## 3. Usage
 
