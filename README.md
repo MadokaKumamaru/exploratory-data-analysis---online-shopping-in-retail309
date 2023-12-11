@@ -9,7 +9,7 @@ Following libraries to be installed:
 - PyYAML
 - Matplotlib
 - statsmodels
-- -numpy
+- Numpy
 
 ## 3. Usage
 
