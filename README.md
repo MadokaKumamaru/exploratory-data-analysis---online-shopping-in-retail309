@@ -7,6 +7,7 @@ Following libraries to be installed:
 - pandas
 - SQLAlchemy
 - PyYAML
+- Matplotlib
 
 ## 3. Usage
 
