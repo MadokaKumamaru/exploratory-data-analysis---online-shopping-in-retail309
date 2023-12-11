@@ -1,5 +1,8 @@
 # This file will contain code to conduct EDA
 
+# Import required packages
+import pandas as pd
+
 # Import required module
 import db_utils
 
@@ -80,9 +83,17 @@ class DataFrameTransform:
     def __init__(self, dataframe):
         self.dataframe = dataframe
         
-    # Define a method to impute NULLs with median
+    # Define a method to impute NULLs with mode
     def mode_impute(self, column):
         self.dataframe[column] = self.dataframe[column].fillna(self.dataframe[column].mode())
+        
+    # Define a method to impute NULLs with mean
+    def mean_imputation(self, column):
+        self.dataframe[column] = self.dataframe[column].fillna(self.dataframe[column].mean())
+        
+    # Define a method to impute NULLs with median
+    def median_imputation(self, column):
+        self.dataframe[column] = self.dataframe[column].fillna(self.dataframe[column].median())
         
 # Get all the column names from the dataset
 columns = list(customer_activity.columns)
@@ -107,3 +118,9 @@ customer_activity_plotter = Plotter(customer_activity)
 numeric_missing_columns = ['administrative_duration', 'product_related_duration']
 for colum in numeric_missing_columns:
     customer_activity_plotter.plot_histograms(columns)
+    
+    
+# Identify skewness in each numerical column
+df_for_skewness = customer_activity[['administrative_duration', 'informational_duration', 'product_related_duration',
+                   'bounce_rates', 'exit_rates', 'page_values']].copy()
+print(df_for_skewness.skew())
