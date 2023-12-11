@@ -10,6 +10,7 @@ Following libraries to be installed:
 - Matplotlib
 - statsmodels
 - Numpy
+- seaborn
 
 ## 3. Usage
 
