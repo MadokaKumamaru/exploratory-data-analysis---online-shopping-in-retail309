@@ -1,6 +1,8 @@
 # This file will contain code to conduct EDA
 
 # Import required packages
+from statsmodels.graphics.gofplots import qqplot
+import matplotlib.pyplot as plt
 import pandas as pd
 
 # Import required module
@@ -73,9 +75,17 @@ class Plotter:
     def __init__(self, dataframe):
         self.dataframe = dataframe
     
-    # Define a method to plot a column to check for skewness
+    # Define a method to plot histogram to check skewness
     def plot_histograms(self, column):
         self.dataframe[column].hist(bins = 20)
+        plt.title(f'Histogram for {column}')
+        plt.show()
+        
+    # Define a method to plot Q-Q plot to check skewness
+    def plot_qqplot(self, column):
+        qq_plot = qqplot(self.dataframe[column], scale = 1, line = 'q', fit = True)
+        plt.title(f'Q-Q plot for {column}')
+        plt.show()
 
 # Create a class to perform EDA transformations on 
 # data
@@ -85,7 +95,8 @@ class DataFrameTransform:
         
     # Define a method to impute NULLs with mode
     def mode_impute(self, column):
-        self.dataframe[column] = self.dataframe[column].fillna(self.dataframe[column].mode())
+        column_mode = self.dataframe[column].mode().iloc[0]
+        self.dataframe[column].fillna(column_mode, inplace=True)
         
     # Define a method to impute NULLs with mean
     def mean_imputation(self, column):
@@ -103,24 +114,33 @@ customer_activity_info = DataFrameInfo(customer_activity)
 for column in columns:
     print(customer_activity_info.get_NULL_counts(column))
     
-# Conduct median impute for categorical columns
+# Conduct mode impute for categorical columns and check all NULLs have been imputed
 customer_activity_transform = DataFrameTransform(customer_activity)
 categorical_missing_columns = ['administrative', 'product_related', 'operating_systems']
 for column in categorical_missing_columns:
     customer_activity_transform.mode_impute(column)
-    
-# Check NULLs have been imputed
-for column in categorical_missing_columns:
     print(customer_activity_info.get_NULL_counts(column))
     
 # Plot numerical columns with missing values to check skewness
 customer_activity_plotter = Plotter(customer_activity)
 numeric_missing_columns = ['administrative_duration', 'product_related_duration']
-for colum in numeric_missing_columns:
-    customer_activity_plotter.plot_histograms(columns)
+for column in numeric_missing_columns:
+    customer_activity_plotter.plot_histograms(column)
+    
+# Conduct median imputation for numerical columns with missing values and check all 
+# NULLs have been imputed
+for column in numeric_missing_columns:
+    customer_activity_transform.median_imputation(column)
+    print(customer_activity_info.get_NULL_counts(column))
+
     
     
 # Identify skewness in each numerical column
 df_for_skewness = customer_activity[['administrative_duration', 'informational_duration', 'product_related_duration',
                    'bounce_rates', 'exit_rates', 'page_values']].copy()
 print(df_for_skewness.skew())
+
+# Q-Q plot for numerical columns
+numeric_columns = list(customer_activity.columns)
+for column in numeric_columns:
+    customer_activity_plotter.plot_qqplot(column)
