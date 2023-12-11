@@ -37,8 +37,8 @@ class RDSDatabaseConnector:
             
         
 # Create a function which saves the data in .csv format to local machine
-def save_data():
-    customer_activity.to_csv('customer_activity.csv')
+def save_data(dataframe):
+    dataframe.to_csv('customer_activity.csv')
     
 # Create a function which will load the data from your local machine
 # into a pandas DataFrame
