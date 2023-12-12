@@ -1,4 +1,4 @@
-# This file will contain code to extract data from the database
+# This file will contain code to extract data from the RDS database
 
 # Import required packages
 from sqlalchemy import create_engine
@@ -30,7 +30,7 @@ class RDSDatabaseConnector:
         DATABASE = self.yaml_dictionary['RDS_DATABASE']
         return create_engine(f"{DATABASE_TYPE}+{DBAPI}://{USER}:{PASSWORD}@{ENDPOINT}:{PORT}/{DATABASE}")
             
-    # Define a method which extracts thedata from the RDS 
+    # Define a method which extracts data from the RDS 
     # database and returns it as a Pandas DataFrame
     def extract_data(self, engine):
         return pd.read_sql_table('customer_activity', engine)
