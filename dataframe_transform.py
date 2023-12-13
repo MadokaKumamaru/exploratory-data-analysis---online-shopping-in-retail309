@@ -1,3 +1,8 @@
+# Import required packages
+import numpy as np
+from scipy import stats
+from scipy.stats import yeojohnson
+
 # Create a class to perform EDA transformations on the DataFrame
 class DataFrameTransform:
     def __init__(self, dataframe):
@@ -25,11 +30,10 @@ class DataFrameTransform:
         self.dataframe[column] = stats.yeojohnson(self.dataframe[column])[0]
         
     # Define a method to drop outliers
-    def drop_outliers(self, column):
-        Q1 = self.dataframe[column].quantile(0.25)
-        Q3 = self.dataframe[column].quantile(0.75)
-        IQR = Q3 - Q1
-        lower = Q1 - 1.5 * IQR
-        upper = Q3 + 1.5 * IQR
-        outliers = self.dataframe[(self.dataframe[column] >= Q1 - 1.5*IQR) & (self.dataframe[column] <= Q3 + 1.5*IQR)]
+    def drop_outliers(self, z_score_column):
+        outliers = self.dataframe[(self.dataframe[z_score_column] >= 3) | (self.dataframe[z_score_column] <= -3)]
         self.dataframe = self.dataframe.drop(outliers.index)
+        
+    # Define a method to drop columns
+    def drop_column(self, column):
+        self.dataframe.drop(column, axis = 1)

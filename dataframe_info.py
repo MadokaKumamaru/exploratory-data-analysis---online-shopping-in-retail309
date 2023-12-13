@@ -1,3 +1,6 @@
+# Import required packages
+import numpy as np
+
 # Create a class which contains methods to extract information
 # from the DataFrame and its columns
 class DataFrameInfo:
@@ -10,7 +13,7 @@ class DataFrameInfo:
         print(self.dataframe.describe())
         
     # Define a method to extract statistical values (mean, median
-    # and standard deviation) from the float64 columns
+    # and standard deviation) from the numeric columns
     def get_statistical_values(self, column):
         print(f'Mean for {column}:', self.dataframe[column].mean())
         print(f'Median for {column}:', self.dataframe[column].median())
@@ -33,4 +36,10 @@ class DataFrameInfo:
         
     # Define a method to get skewness for numeric columns
     def get_skewness(self, column):
-        print(f'Skew of {column} is', self.dataframe[column].skew())
+        print(f'Skew of {column} is', round(self.dataframe[column].skew(), 2))
+        
+    # Define a method to get Z-scores for numerical columns
+    def get_zscores(self, column):
+        column_mean = np.mean(self.dataframe[column])
+        column_std = np.std(self.dataframe[column])
+        return (self.dataframe[column] - column_mean) / column_std
