@@ -30,10 +30,10 @@ class DataFrameTransform:
         self.dataframe[column] = stats.yeojohnson(self.dataframe[column])[0]
         
     # Define a method to drop outliers
-    def drop_outliers(self, z_score_column):
-        outliers = self.dataframe[(self.dataframe[z_score_column] >= 3) | (self.dataframe[z_score_column] <= -3)]
-        self.dataframe = self.dataframe.drop(outliers.index)
+    def drop_outliers(self, column):
+        outliers = self.dataframe[(self.dataframe[column] >= 3) | (self.dataframe[column] <= -3)]
+        self.dataframe.drop(outliers.index, inplace = True)
         
     # Define a method to drop columns
     def drop_column(self, column):
-        self.dataframe.drop(column, axis = 1)
+        self.dataframe.drop(column, axis = 1, inplace = True)
