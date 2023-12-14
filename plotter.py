@@ -15,12 +15,6 @@ class Plotter:
         plt.title(f'Histogram for {column}')
         plt.show()
     
-    # Define a method to plot box plot to check outliers
-    def plot_boxplot(self, column):
-        sns.boxplot(y = self.dataframe[column], color = 'lightgreen', showfliers = True)
-        plt.title(f'Box plot with scatter points of {column}')
-        plt.show()
-        
     # Define a method to plot bar chart for categorical columns
     def plot_barchart(self, column):
         sns.barplot(y = self.dataframe[column].index, x = self.dataframe[column].values)

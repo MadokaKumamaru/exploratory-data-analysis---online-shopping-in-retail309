@@ -14,18 +14,10 @@ class DataFrameTransform:
     def mode_impute(self, column):
         column_mode = self.dataframe[column].mode().iloc[0]
         self.dataframe[column].fillna(column_mode, inplace=True)
-        
-    # Define a method to impute NULLs with mean
-    def mean_impute(self, column):
-        self.dataframe[column] = self.dataframe[column].fillna(self.dataframe[column].mean())
-        
+   
     # Define a method to impute NULLs with median
     def median_impute(self, column):
         self.dataframe[column] = self.dataframe[column].fillna(self.dataframe[column].median())
-        
-    # Define a method to compute log transform
-    def log_transform(self, column):
-        self.dataframe[column] = self.dataframe[column].map(lambda i: np.log(i) if i > 0 else 0)
         
     # Define a method to compute Yeo-Johnson transform
     def yeo_johnson_transform(self, column):

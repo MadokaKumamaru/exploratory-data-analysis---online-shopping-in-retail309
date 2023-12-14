@@ -15,11 +15,9 @@ class DataFrameInfo:
         print('Description for numeric columns:')
         print(self.dataframe.describe())
         
-    # Define a method to extract statistical values (mean, median
-    # and standard deviation) from the numeric columns
+    # Define a method to extract median from the numeric columns
     def get_median(self, column):
         print(f'Median for {column}:', self.dataframe[column].median())
-        
         
     # Define a method to count distinct values in categorical columns
     def get_counts(self, column):
@@ -27,14 +25,14 @@ class DataFrameInfo:
         df_value_counts = pd.DataFrame(self.dataframe[column].value_counts())
         df_value_counts = df_value_counts.reset_index()
         df_value_counts.columns = [f'{column}', 'counts']
-        df_value_counts['percentage'] = df_value_counts['counts'] / df_value_counts['counts'].sum()
-        print(df_value_counts)
+        df_value_counts['percentage'] = round(df_value_counts['counts'] / df_value_counts['counts'].sum() * 100, 2)
+        print(df_value_counts.to_string(index=False))
         
     # Define a method to print out the shape of the DataFrame
     def get_shape(self):
         print('Shape of the DataFrame:', self.dataframe.shape)
         
-    # Define a method to generate a count and percentage of NULL values 
+    # Define a method to generate counts and percentage of NULL values 
     # in each column
     def get_NULL_counts(self, column):
         print(f'Number of NULLs for {column}:', self.dataframe[column].isnull().sum())

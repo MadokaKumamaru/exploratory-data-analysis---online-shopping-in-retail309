@@ -36,12 +36,3 @@ class RDSDatabaseConnector:
         return pd.read_sql_table('customer_activity', engine)
             
         
-# Create a function which saves the data in .csv format to local machine
-def save_data(dataframe, filename):
-    dataframe.to_csv('filename')
-    
-# Create a function which will load the data from your local machine
-# into a pandas DataFrame
-def load_data():
-    return pd.read_csv('customer_activity.csv')
-    
