@@ -14,14 +14,13 @@ class DataFrameInfo:
         
     # Define a method to extract statistical values (mean, median
     # and standard deviation) from the numeric columns
-    def get_statistical_values(self, column):
-        print(f'Mean for {column}:', self.dataframe[column].mean())
+    def get_median(self, column):
         print(f'Median for {column}:', self.dataframe[column].median())
-        print(f'Standard Deviation for {column}:', self.dataframe[column].std())
+        
         
     # Define a method to count distinct values in categorical columns
     def get_counts(self, column):
-        self.dataframe[column].value_counts()
+        print(f'Counts for distinct values for', self.dataframe[column].value_counts())
         
     # Define a method to print out the shape of the DataFrame
     def get_shape(self):

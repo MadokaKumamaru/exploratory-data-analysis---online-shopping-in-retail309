@@ -19,6 +19,12 @@ class Plotter:
         plt.title(f'Box plot with scatter points of {column}')
         plt.show()
         
+    # Define a method to plot bar chart for categorical columns
+    def plot_barchart(self, column):
+        sns.barplot(y = self.dataframe[column].index, x = self.dataframe[column].values)
+        plt.title(f'Bar chart for {column}')
+        plt.show()
+        
     # Define a method to plot correlation matrix
     def plot_correlation_matrix(self):
         sns.heatmap(self.dataframe.corr(), annot = True, cmap = 'coolwarm')
