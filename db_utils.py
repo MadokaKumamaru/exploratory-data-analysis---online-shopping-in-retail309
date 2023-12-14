@@ -1,4 +1,4 @@
-# This file will contain code to extract data from the RDS database
+# This file contains code to extract data from the RDS database
 
 # Import required packages
 from sqlalchemy import create_engine

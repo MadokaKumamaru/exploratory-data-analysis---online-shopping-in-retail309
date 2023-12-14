@@ -1,5 +1,8 @@
+# This file contains code to get information from the DataFrame
+
 # Import required packages
 import numpy as np
+import pandas as pd
 
 # Create a class which contains methods to extract information
 # from the DataFrame and its columns
@@ -20,7 +23,12 @@ class DataFrameInfo:
         
     # Define a method to count distinct values in categorical columns
     def get_counts(self, column):
-        print(f'Counts for distinct values for', self.dataframe[column].value_counts())
+        print(f'Counts for distinct values for {column}')
+        df_value_counts = pd.DataFrame(self.dataframe[column].value_counts())
+        df_value_counts = df_value_counts.reset_index()
+        df_value_counts.columns = [f'{column}', 'counts']
+        df_value_counts['percentage'] = df_value_counts['counts'] / df_value_counts['counts'].sum()
+        print(df_value_counts)
         
     # Define a method to print out the shape of the DataFrame
     def get_shape(self):

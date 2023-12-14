@@ -1,3 +1,5 @@
+# This file contains code to visualise the DataFrame
+
 # Import required packages
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -23,6 +25,7 @@ class Plotter:
     def plot_barchart(self, column):
         sns.barplot(y = self.dataframe[column].index, x = self.dataframe[column].values)
         plt.title(f'Bar chart for {column}')
+        plt.xticks(rotation = 90)
         plt.show()
         
     # Define a method to plot correlation matrix
