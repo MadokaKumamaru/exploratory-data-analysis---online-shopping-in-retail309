@@ -30,7 +30,7 @@ Data dictionary for online customer activity:
 - **browser**: The browser used by the user
 - **region**: The region the user originated from
 - **traffic_type**: How the user was redirected to the site
-- **visitor_type**: Whether a customer was is new/returning or other
+- **visitor_type**: Whether a customer was new/returning or other
 - **weekend**: Whether the activity only took place during the weekend
 - **revenue**: Whether the customer purchased anything that session
 
