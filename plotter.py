@@ -11,17 +11,18 @@ class Plotter:
     
     # Define a method to plot histogram to check skewness
     def plot_histograms(self, column):
+        plt.figure(figsize=(2,5))
         self.dataframe[column].hist(bins = 3)
         plt.title(f'Histogram for {column}')
         plt.show()
     
-    # Define a method to plot bar chart for categorical columns
-    def plot_barchart(self, column):
-        sns.barplot(y = self.dataframe[column].index, x = self.dataframe[column].values)
-        plt.title(f'Bar chart for {column}')
-        plt.xticks(rotation = 90)
+    # Define a method to plot counts for categorical columns
+    def plot_counts(self, column):
+        plt.figure(figsize=(2,5))
+        self.dataframe[column].value_counts().plot(kind = 'bar')
+        plt.title(f'Barplot for {column}')
         plt.show()
-        
+    
     # Define a method to plot correlation matrix
     def plot_correlation_matrix(self):
         sns.heatmap(self.dataframe.corr(), annot = True, cmap = 'coolwarm')
