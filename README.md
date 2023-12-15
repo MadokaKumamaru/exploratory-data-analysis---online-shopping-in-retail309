@@ -1,6 +1,7 @@
 # exploratory-data-analysis---online-shopping-in-retail309
 
 ## 1. Description
+During this data analysis, a dataset of online shopping website activity (each row representing details about one user while being on the website) will be extracted from RDS database, cleaned using various statistical methods, then will be analysed to answer some questions which will contribute to make informed decisions about changes to the website and marketing strategies.
 
 ## 2. Installation
 Following libraries to be installed:
@@ -35,5 +36,12 @@ Data dictionary for online customer activity:
 - **revenue**: Whether the customer purchased anything that session
 
 ## 4. File Structure
+This repository contains following files:
+- customer_activity.csv: data extracted from the database
+- dataframe_info.py: contains class methods required to get information from data
+- dataframe_transform.py: contains class methods for transforming data during data clearning process to make the data ready for analysis
+- plotter.py: contains class methods to visualise data to gain insights
+- db_utils.py: contains class methods to extract data from the database
+- retail_EDA_report.ipynb: main report for this data analysis 
+- 
 
-## 5. Licence
