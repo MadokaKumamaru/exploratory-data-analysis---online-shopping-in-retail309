@@ -43,5 +43,3 @@ This repository contains following files:
 - plotter.py: contains class methods to visualise data to gain insights
 - db_utils.py: contains class methods to extract data from the database
 - retail_EDA_report.ipynb: main report for this data analysis 
-- 
-
