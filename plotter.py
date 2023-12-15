@@ -11,14 +11,14 @@ class Plotter:
     
     # Define a method to plot histogram to check skewness
     def plot_histograms(self, column):
-        plt.figure(figsize=(2,5))
+        plt.figure(figsize=(5,4))
         self.dataframe[column].hist(bins = 3)
         plt.title(f'Histogram for {column}')
         plt.show()
     
     # Define a method to plot counts for categorical columns
     def plot_counts(self, column):
-        plt.figure(figsize=(2,5))
+        plt.figure(figsize=(5,4))
         self.dataframe[column].value_counts().plot(kind = 'bar')
         plt.title(f'Barplot for {column}')
         plt.show()
