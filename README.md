@@ -42,4 +42,5 @@ This repository contains following files:
 - dataframe_transform.py: contains class methods for transforming data during data clearning process to make the data ready for analysis
 - plotter.py: contains class methods to visualise data to gain insights
 - db_utils.py: contains class methods to extract data from the database
+- datatype_transform.py class methods to transform data types
 - retail_EDA_report.ipynb: main report for this data analysis 
